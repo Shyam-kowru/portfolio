@@ -192,6 +192,20 @@ section {
     background: #3498db;
 }
 
+.btn-download {
+    background: linear-gradient(45deg, #e74c3c, #c0392b);
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-download:hover {
+    background: linear-gradient(45deg, #c0392b, #a93226);
+    transform: translateY(-2px);
+}
+
+
 /* About Section */
 .about {
     background: #f8f9fa;
