@@ -134,6 +134,52 @@ const statsObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.stat').forEach(stat => {
     statsObserver.observe(stat);
 });
+// Download Resume as PDF
+document.getElementById('download-resume').addEventListener('click', () => {
+    // Create a clean version for PDF
+    const originalBody = document.body.innerHTML;
+    const printContent = `
+        <div style="font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px;">
+            <h1 style="color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px;">Shyam Kumar K</h1>
+            <p><strong>Email:</strong> shyamkumarkowru@gmail.com | <strong>Phone:</strong> +91 9008275657</p>
+            <p><strong>Location:</strong> Bengaluru, Karnataka, India</p>
+            
+            <h2 style="color: #2c3e50; margin-top: 30px;">Education</h2>
+            <p><strong>City Engineering College Bangalore</strong><br>
+            Bachelor of Engineering | August 2021 – Present</p>
+            
+            <h2 style="color: #2c3e50; margin-top: 30px;">Experience</h2>
+            <p><strong>AI/ML Internship | Rooman Technologies</strong><br>
+            September 2024 – May 2025 | Bikasipura, Bengaluru</p>
+            
+            <p><strong>Frontend Development Internship | Colt Assist Private</strong><br>
+            October 2023 – November 2023 | J.P. Nagar, Bengaluru</p>
+            
+            <p><strong>Python Development Internship | IPEC Solutions</strong><br>
+            October 2022 – November 2022 | Rajarajeshwari Nagar, Bengaluru</p>
+            
+            <h2 style="color: #2c3e50; margin-top: 30px;">Skills</h2>
+            <p><strong>Programming:</strong> Python, JavaScript, SQL<br>
+            <strong>Web Technologies:</strong> HTML5, CSS3, React<br>
+            <strong>AI/ML:</strong> scikit-learn, NumPy, Pandas, Matplotlib, InceptionV3, LSTM</p>
+            
+            <h2 style="color: #2c3e50; margin-top: 30px;">Projects</h2>
+            <p><strong>DeepFake Detection System</strong> - Web-based AI tool using InceptionV3 + LSTM<br>
+            <strong>Scientific Calculator</strong> - JavaScript-based mathematical calculator<br>
+            <strong>COVID-19 Chatbot</strong> - Python-based NLP chatbot</p>
+        </div>
+    `;
+    
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write(`
+        <html><head><title>Shyam Kumar K - Resume</title></head><body>
+        ${printContent}
+        </body></html>
+    `);
+    printWindow.document.close();
+    printWindow.print();
+});
+
 
 // Particle effect for hero section (optional enhancement)
 function createParticle() {
