@@ -134,7 +134,13 @@ const statsObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.stat').forEach(stat => {
     statsObserver.observe(stat);
 });
-
+// External link handling (open in new tab + safe rel)
+(function () {
+  document.querySelectorAll('a[href^="http"]').forEach(a => {
+    if (!a.target) a.target = '_blank';
+    if (!a.rel) a.rel = 'noreferrer';
+  });
+})();
 // Particle effect for hero section (optional enhancement)
 function createParticle() {
     const particle = document.createElement('div');
@@ -167,3 +173,4 @@ function createParticle() {
 
 // Create particles periodically
 setInterval(createParticle, 300);
+
